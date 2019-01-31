@@ -4,7 +4,7 @@ const bot = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
 const prefix = config.prefix
 bot.commands = new Discord.Collection();
-
+//ignore this comment pls - elementzprojects
 fs.readdir("./commands", (err, files) => {
   let jsfile = files.filter(f => f.split(".").pop() === "js");
   if (jsfile.length <= 0) console.log("Couldn't find the command!");
