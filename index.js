@@ -19,6 +19,9 @@ bot.on("ready", () => {
 });
 
 bot.on("message", message => {
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
 
     if (!message.content.startsWith("tf!")) return;
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
