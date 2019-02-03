@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 
                         
 
-module.exports.oneLetterUsername = (oM, nM) => {
+function oneLetterUsername(oM, nM){
       // Create 'One-letter nickname club' role with a random color if it does not already exist
       var role = createNewRole(nM.guild, {
             name: 'One-letter nickname club',
@@ -24,7 +24,7 @@ module.exports.oneLetterUsername = (oM, nM) => {
       );
 }
 
-module.exports.refreshAll = () => {
+function refreshAll(){
       bot.guilds.forEach(
             (guild) => {
                   guild.members.forEach(
