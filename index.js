@@ -33,6 +33,29 @@ bot.on("message", message => {
     if (!message.content.startsWith("tf!")) return;
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if (commandfile) commandfile.run(bot, message, args);
-})
+});
+
+bot.on("guildMemberAdd", (member) => {
+      var guild = member.guild;
+      if (guild.memberCount % 100 == 0) {
+            var role = guild.roles.find(x => x.name == guild.memberCount + 'th');
+		if (!role) {
+			role = guild.createRole({
+				name: guild.memberCount + 'th',
+				color: 'RANDOM',
+				mentionable: true
+			});
+		}
+
+		// https://stackoverflow.com/a/27760489
+		Promise.resolve(role).then(
+			(role) => {
+				member.addRole(role).then(
+					() => guild.systemChannel.send('Congratulations ' + member + ', you are the ' + guild.memberCount + 'th person to join the `' + guild.name + '` server!')
+				);
+			}
+		);
+      }
+});
 
 bot.login(auth.token);
