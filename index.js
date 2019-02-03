@@ -66,6 +66,9 @@ bot.on("message", message => {
     admin.database().ref('servers/' + message.guild.id + '/settings/prefix').once('value').then(
 	    (snapshot) => {
 		    var prefix = snapshot.val();
+		    if (prefix == undefined || prefix = '') {
+			    prefix = config.prefix;
+		    }
 		    if (!message.content.startsWith(prefix)) return;
 		    let commandfile = bot.commands.get(cmd.slice(prefix.length));
 		    if (commandfile) commandfile.run(bot, message, args);
