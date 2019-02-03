@@ -8,14 +8,14 @@ try {
 	var fb_auth = {
             project_id: 'tensorbot-bb058',
             client_email: process.env.client_email,
-            private_key: process.env.private_key.replace(/\\n/g, '\n')
+            private_key: process.env.private_key
 	};
 }
 admin.initializeApp({
   credential: admin.credential.cert({
     projectId: fb_auth.project_id,
     clientEmail: fb_auth.client_email,
-    privateKey: fb_auth.private_key
+    privateKey: unescape(fb_auth.private_key)
   }),
   databaseURL: 'https://tensorbot-bb058.firebaseio.com/'
 });
