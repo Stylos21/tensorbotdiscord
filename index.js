@@ -43,7 +43,6 @@ global.createNewRole = function(guild, roleInfo) {
       return role;
 }
 
-const prefix = config.prefix
 bot.commands = new Discord.Collection();
 //ignore this comment pls lol - elementzprojects
 fs.readdir("./commands", (err, files) => {
@@ -64,10 +63,14 @@ bot.on("message", message => {
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
-
-    if (!message.content.startsWith("tf!")) return;
-    let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if (commandfile) commandfile.run(bot, message, args);
+    admin.database().ref('servers/' + message.guild.id + '/settings/prefix').once('value').then(
+	    (snapshot) => {
+		    var prefix = snapshot.val();
+		    if (!message.content.startsWith(prefix)) return;
+		    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+		    if (commandfile) commandfile.run(bot, message, args);
+	    }
+    );
 });
 
 bot.login(auth.token);
