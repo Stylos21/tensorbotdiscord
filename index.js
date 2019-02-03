@@ -9,8 +9,19 @@ try {
 }
 global.bot = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
+
 const xkcd = require("./functions/xkcd.js");
 const new_member = require("./functions/new_member.js");
+const one_letter_username = require("./functions/one_letter_username.js");
+
+global.createNewRole = function(guild, roleInfo) {
+      var role = guild.roles.find(x => x.name == roleInfo.name);
+      if (!role) {
+            role = guild.createRole(roleInfo);
+      }
+      return role;
+}
+
 const prefix = config.prefix
 bot.commands = new Discord.Collection();
 //ignore this comment pls lol - elementzprojects
@@ -29,7 +40,7 @@ bot.on("ready", () => {
   bot.guilds.forEach(
         (guild) => {
               guild.members.forEach(
-                    (member) => oneLetterUsername(undefined, member)
+                    (member) => one_letter_username.run(undefined, member)
               )
         }
   );
@@ -44,32 +55,5 @@ bot.on("message", message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if (commandfile) commandfile.run(bot, message, args);
 });
-
-const createNewRole = function(guild, roleInfo) {
-      var role = guild.roles.find(x => x.name == roleInfo.name);
-      if (!role) {
-            role = guild.createRole(roleInfo);
-      }
-      return role;
-}
-
-bot.on('guildMemberUpdate', (oldMember, newMember) => oneLetterUsername(oldMember, newMember))
-
-function oneLetterUsername(oM, nM) {
-      var role = createNewRole(nM.guild, {
-            name: 'One-letter nickname club',
-            color: 'RANDOM',
-            mentionable: true
-      });
-      Promise.resolve(role).then(
-            (role) => {
-                  if (nM.displayName.length === 1) {
-                        nM.addRole(role);
-                  } else {
-                        nM.removeRole(role);
-                  }
-            }
-      );
-}
 
 bot.login(auth.token);
