@@ -1,5 +1,12 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
+try {
+	var auth = require('./auth.json');
+} catch (error) {
+	var auth = {
+		'token': process.env.BOT_TOKEN
+	};
+}
 const bot = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
 const prefix = config.prefix
@@ -26,8 +33,6 @@ bot.on("message", message => {
     if (!message.content.startsWith("tf!")) return;
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if (commandfile) commandfile.run(bot, message, args);
-
-
 })
 
-bot.login(process.env.bot_token);
+bot.login(auth.token);
