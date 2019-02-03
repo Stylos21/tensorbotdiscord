@@ -14,8 +14,8 @@ try {
 admin.initializeApp({
   credential: admin.credential.cert({
     projectId: fb_auth.project_id,
-    clientEmail: fb_auth.client_email.replace(/\\n/g, '\n'),
-    privateKey: fb_auth.private_key
+    clientEmail: fb_auth.client_email,
+    privateKey: fb_auth.private_key.replace(/\\n/g, '\n')
   }),
   databaseURL: 'https://tensorbot-bb058.firebaseio.com/'
 });
