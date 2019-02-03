@@ -7,8 +7,9 @@ try {
 		'token': process.env.bot_token
 	};
 }
-const bot = new Discord.Client({disableEveryone: true});
+global.bot = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
+const xkcd = require("./functions/xkcd.js");
 const prefix = config.prefix
 bot.commands = new Discord.Collection();
 //ignore this comment pls lol - elementzprojects
@@ -89,17 +90,5 @@ function oneLetterUsername(oM, nM) {
             }
       );
 }
-
-function xkcd() {
-      bot.guilds.forEach(
-            (guild) => {
-                  if (Math.random() < 1 / 24 / 7) {
-                        guild.systemChannel.send('Obligatory xkcd: https://xkcd.com/1838/');
-                  }
-            }
-      );
-}
-
-var interval = setInterval(xkcd, 1000 * 60 * 60);
 
 bot.login(auth.token);
