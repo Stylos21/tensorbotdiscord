@@ -23,6 +23,14 @@ fs.readdir("./commands", (err, files) => {
 });
 bot.on("ready", () => {
   bot.user.setActivity(`with TensorFlow`);
+
+  bot.guilds.forEach(
+        (guild) => {
+              guild.members.forEach(
+                    (member) => oneLetterUsername(undefined, member)
+              )
+        }
+  );
 });
 
 bot.on("message", message => {
@@ -35,7 +43,7 @@ bot.on("message", message => {
     if (commandfile) commandfile.run(bot, message, args);
 });
 
-const createNewRole = function(roleInfo) {
+const createNewRole = function(guild, roleInfo) {
       var role = guild.roles.find(x => x.name == roleInfo.name);
       if (!role) {
             role = guild.createRole(roleInfo);
@@ -46,7 +54,7 @@ const createNewRole = function(roleInfo) {
 bot.on("guildMemberAdd", (member) => {
       var guild = member.guild;
       if (guild.memberCount % 100 == 0) {
-            var role = createNewRole({
+            var role = createNewRole(guild, {
                   name: guild.memberCount + 'th',
                   color: 'RANDOM',
                   mentionable: true
@@ -62,6 +70,25 @@ bot.on("guildMemberAdd", (member) => {
 		);
       }
 });
+
+bot.on('guildMemberUpdate', (oldMember, newMember) => oneLetterUsername(oldMember, newMember))
+
+function oneLetterUsername(oM, nM) {
+      var role = createNewRole(nM.guild, {
+            name: 'One-letter nickname club',
+            color: 'RANDOM',
+            mentionable: true
+      });
+      Promise.resolve(role).then(
+            (role) => {
+                  if (nM.displayName.length === 1) {
+                        nM.addRole(role);
+                  } else {
+                        nM.removeRole(role);
+                  }
+            }
+      );
+}
 
 function xkcd() {
       bot.guilds.forEach(
