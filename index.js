@@ -35,17 +35,22 @@ bot.on("message", message => {
     if (commandfile) commandfile.run(bot, message, args);
 });
 
+const createNewRole = function(roleInfo) {
+      var role = guild.roles.find(x => x.name == roleInfo.name);
+      if (!role) {
+            role = guild.createRole(roleInfo);
+      }
+      return role;
+}
+
 bot.on("guildMemberAdd", (member) => {
       var guild = member.guild;
       if (guild.memberCount % 100 == 0) {
-            var role = guild.roles.find(x => x.name == guild.memberCount + 'th');
-		if (!role) {
-			role = guild.createRole({
-				name: guild.memberCount + 'th',
-				color: 'RANDOM',
-				mentionable: true
-			});
-		}
+            var role = createNewRole({
+                  name: guild.memberCount + 'th',
+                  color: 'RANDOM',
+                  mentionable: true
+            });
 
 		// https://stackoverflow.com/a/27760489
 		Promise.resolve(role).then(
