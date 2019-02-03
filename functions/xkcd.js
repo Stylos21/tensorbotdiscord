@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 // Post the 'Machine Learning' xkcd comic the the server's default channel at random intervals (on average, once every week)
 function xkcd() {
       // Loop through all guilds bot is a member of

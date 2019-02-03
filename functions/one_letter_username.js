@@ -1,9 +1,7 @@
+const Discord = require("discord.js");
+
 // Give a special role to users with one-letter long nicknames
-const Discord = require('discord.js')
-
-                        
-
-function oneLetterUsername(oM, nM){
+function oneLetterUsername(oM, nM) {
       // Create 'One-letter nickname club' role with a random color if it does not already exist
       var role = createNewRole(nM.guild, {
             name: 'One-letter nickname club',
@@ -24,7 +22,7 @@ function oneLetterUsername(oM, nM){
       );
 }
 
-function refreshAll(){
+function refreshAll() {
       bot.guilds.forEach(
             (guild) => {
                   guild.members.forEach(

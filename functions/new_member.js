@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 // Create a special role for every 100th member to join the server
 bot.on("guildMemberAdd", (member) => {
       var guild = member.guild;
