@@ -20,10 +20,21 @@ function oneLetterUsername(oM, nM) {
       );
 }
 
+function refreshAll() {
+      bot.guilds.forEach(
+            (guild) => {
+                  guild.members.forEach(
+                        (member) => oneLetterUsername(undefined, member)
+                  )
+            }
+      );
+}
+
 // If a guild member's nickname changes, check if they qualify for the role
 bot.on('guildMemberUpdate', (oldMember, newMember) => oneLetterUsername(oldMember, newMember))
 
 // Export run function
 module.exports = {
-      'run': oneLetterUsername
+      'run': oneLetterUsername,
+      'refreshAll': refreshAll
 };

@@ -36,14 +36,7 @@ fs.readdir("./commands", (err, files) => {
 });
 bot.on("ready", () => {
   bot.user.setActivity(`with TensorFlow`);
-
-  bot.guilds.forEach(
-        (guild) => {
-              guild.members.forEach(
-                    (member) => one_letter_username.run(undefined, member)
-              )
-        }
-  );
+  one_letter_username.refreshAll();
 });
 
 bot.on("message", message => {
