@@ -1,4 +1,4 @@
-// Here we goooo!
+// Here we goooo
 const Discord = require("discord.js");
 const config = require("./config.json");
 try {
