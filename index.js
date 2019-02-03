@@ -14,7 +14,7 @@ try {
 admin.initializeApp({
   credential: admin.credential.cert({
     projectId: fb_auth.project_id,
-    clientEmail: fb_auth.client_email,
+    clientEmail: fb_auth.client_email.replace(/\\n/g, '\n'),
     privateKey: fb_auth.private_key
   }),
   databaseURL: 'https://tensorbot-bb058.firebaseio.com/'
@@ -66,7 +66,7 @@ bot.on("message", message => {
     admin.database().ref('servers/' + message.guild.id + '/settings/prefix').once('value').then(
 	    (snapshot) => {
 		    var prefix = snapshot.val();
-		    if (prefix == undefined || prefix = '') {
+		    if (prefix == undefined || prefix == '') {
 			    prefix = config.prefix;
 		    }
 		    if (!message.content.startsWith(prefix)) return;
