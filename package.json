@@ -8,7 +8,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "@tensorflow/tfjs": "github:tensorflow/tfjs",
+    "discord.js": "^11.4.2",
+    "discord.js-commando": "^0.10.0",
+    "firebase-admin": "^7.0.0"
   },
   "devDependencies": {},
   "repository": {
