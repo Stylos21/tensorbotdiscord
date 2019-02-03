@@ -4,24 +4,21 @@ const admin = require('firebase-admin');
 try {
       // It's fb-auth.json, not auth.json!
 	var fb_auth = require('./fb-auth.json');
-	admin.initializeApp({
-	  credential: admin.credential.cert({
-	    projectId: fb_auth.project_id,
-	    clientEmail: fb_auth.client_email,
-	    privateKey: fb_auth.private_key
-	  }),
-	  databaseURL: 'https://tensorbot-bb058.firebaseio.com/'
-	});
 } catch (error) {
-	admin.initializeApp({
-	  credential: admin.credential.cert({
-		project_id: 'tensorbot-bb058',
-		client_email: process.env.client_email,
-		private_key: process.env.private_key.replace(/\\n/g, '\n')
-	  }),
-	  databaseURL: 'https://tensorbot-bb058.firebaseio.com/'
-	});
+	var fb_auth = {
+            project_id: 'tensorbot-bb058',
+            client_email: process.env.client_email,
+            private_key: process.env.private_key.replace(/\\n/g, '\n')
+	};
 }
+admin.initializeApp({
+  credential: admin.credential.cert({
+    projectId: fb_auth.project_id,
+    clientEmail: fb_auth.client_email,
+    privateKey: fb_auth.private_key
+  }),
+  databaseURL: 'https://tensorbot-bb058.firebaseio.com/'
+});
 
 const config = require("./config.json");
 try {
