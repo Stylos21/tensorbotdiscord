@@ -4,7 +4,7 @@ try {
 	var auth = require('./auth.json');
 } catch (error) {
 	var auth = {
-		'token': process.env.bot_token8
+		'token': process.env.bot_token
 	};
 }
 const bot = new Discord.Client({disableEveryone: true});
