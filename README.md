@@ -11,3 +11,5 @@ TensorBot is a custom Discord bot developed for the TensorFlow Discord server, a
 - Role for members with one letter usernames ✓
 - TensorFlow chatbot and natural language processing (NLP) integration
 - Posting [this xkcd comic](https://xkcd.com/1838/) to the server at random intervals ✓
+
+To invite TensorBot to a Discord server, use [this link](https://discordapp.com/oauth2/authorize?client_id=540306502930530344&scope=bot&permissions=536341991). 
