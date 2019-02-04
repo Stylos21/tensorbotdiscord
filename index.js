@@ -57,6 +57,7 @@ fs.readdir("./commands", (err, files) => {
 bot.on("ready", () => {
   bot.user.setActivity(`with TensorFlow`);
   one_letter_username.refreshAll();
+  bot.user.setStatus('dnd')
 });
 
 bot.on("message", message => {
