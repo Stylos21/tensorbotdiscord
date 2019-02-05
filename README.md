@@ -16,5 +16,6 @@ TensorBot is a custom Discord bot developed for the TensorFlow Discord server, a
   - [TensorFlow.js](https://js.tensorflow.org/)
   - TensorFlow C++
   - TensorFlow Java
+ - Machine learning acronym glossary
 
 To invite TensorBot to a Discord server, use [this link](https://discordapp.com/oauth2/authorize?client_id=540306502930530344&scope=bot&permissions=536341991). 
