@@ -16,13 +16,6 @@ function findDoc(name){
 }
 
 module.exports.run = async (bot, message, args) => {
-      // const section = docs.headings.find((x) => {
-      //       x.subheadings.includes((y) => {
-      //             y.symbols.find((z) => {
-      //                   z.symbolName == args[0]
-      //             })
-      //       })
-      // });
       const doc = findDoc(args[0]);
       if (doc) {
             const fields = [];
