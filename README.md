@@ -4,9 +4,9 @@ TensorBot is a custom Discord bot developed for the TensorFlow Discord server, a
 
 - Custom greeting messages and new member introductions
 - Automatic token roles for new members who joined at specific points in time ✓
-- Record keeping
-  - Most members ever online at once
-  - Total members
+- Statistic tracking and record keeping
+  - Number of members online ✓
+  - Total members ✓
 - Custom roles for specific server members
 - Role for members with one letter usernames ✓
 - TensorFlow chatbot and natural language processing (NLP) integration
