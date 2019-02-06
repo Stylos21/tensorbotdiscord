@@ -12,3 +12,5 @@ function updateMembers(oldMember, newMember) {
             }
       });
 }
+
+bot.on('presenceUpdate', (oldMember, newMember) => updateMembers(oldMember, newMember));
