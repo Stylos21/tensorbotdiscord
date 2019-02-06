@@ -44,6 +44,8 @@ module.exports.run = async (bot, message, args) => {
                         text: "TensorBot"
                   }
             }});
+      } else {
+            message.channel.send('Could not find any documentation for `' + args[0] + '` in TensorFlow.js. Full API documentation is available here: https://js.tensorflow.org/api/latest/index.html');
       }
 };
 
