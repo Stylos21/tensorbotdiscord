@@ -34,6 +34,7 @@ const fs = require("fs");
 const xkcd = require("./functions/xkcd.js");
 const new_member = require("./functions/new_member.js");
 const one_letter_username = require("./functions/one_letter_username.js");
+const member_count = require("./functions/member_count.js");
 
 global.createNewRole = function(guild, roleInfo) {
       var role = guild.roles.find(x => x.name == roleInfo.name);
