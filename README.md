@@ -1,4 +1,4 @@
-# tensorbotdiscord
+# TensorBot
 
 TensorBot is a custom Discord bot developed for the [TensorFlow Discord server](https://discordservers.com/server/395520812347686912), and developed by [@elementz#7739](https://github.com/elementzprojects) and [@generic_discord_user#1168](https://github.com/generic-github-user). It provides various functionalities that the staff of the server have hoped to implement that are not available in other bots. These functionalities include:
 
@@ -17,6 +17,7 @@ TensorBot is a custom Discord bot developed for the [TensorFlow Discord server](
   - TensorFlow C++
   - TensorFlow Java
  - Machine learning acronym glossary
+ - Customizable command prefix
 
 # Invite
 
