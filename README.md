@@ -19,3 +19,14 @@ TensorBot is a custom Discord bot developed for the TensorFlow Discord server, a
  - Machine learning acronym glossary
 
 To invite TensorBot to a Discord server, use [this link](https://discordapp.com/oauth2/authorize?client_id=540306502930530344&scope=bot&permissions=536341991). 
+
+# Commands
+
+Below is a list of all commands available with TensorBot.
+
+| Command Name |                              Description                              |                  Arguments                 |                                         Example Usage                                        |
+|:------------:|:---------------------------------------------------------------------:|:------------------------------------------:|:--------------------------------------------------------------------------------------------:|
+|     hello    | Say hello to TensorBot!                                               | none                                       | tf!hello                                                                                     |
+|    prefix    | Set custom TensorBot command prefix.                                  | prefix - string                            | tf!prefix tf!!                                                                               |
+|     docs     | Reference TensorFlow documentation.                                   | docs reference - string OR docs link - URL | tf!docs inputLayer tf!docs https://js.tensorflow.org/api/latest/index.html#layers.inputLayer |
+|    refresh   | Refresh TensorBot functions that normally load on bot initialization. | none                                       | tf!refresh                                                                                   |
