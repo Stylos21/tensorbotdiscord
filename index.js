@@ -66,7 +66,7 @@ bot.on("ready", () => {
 
 bot.on("message", message => {
     
-    if (message.author.bot === true) {
+    if (message.author.bot) {
     	return
     }
     let messageArray = message.content.split(" ");
